@@ -25,3 +25,8 @@ jobs:
           echo "6, $GITHUB_EVENT_NAME"
           echo "7, $GITHUB_OS"
           echo "8, $GITHUB_WORKSPACE"
+
+      - name: 시크릿 변수 사용
+        run : |
+          echo ${{secrets.MY_SECRET}}
+          echo ${{secrets.MY_PAY}}
