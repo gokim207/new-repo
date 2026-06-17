@@ -18,5 +18,10 @@ jobs:
 
       - name: 깃허브 내장 변수 사용
         run : |
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
+          echo "1,  $GITHUB_SHA"
+          echo "2,  $GITHUB_REPOSITORY"
+          echo "4, $GITHUB_REF_NAME"
+          echo "5, $GITHUB_RUN_NUMBER"
+          echo "6, $GITHUB_EVENT_NAME"
+          echo "7, $GITHUB_OS"
+          echo "8, $GITHUB_WORKSPACE"
