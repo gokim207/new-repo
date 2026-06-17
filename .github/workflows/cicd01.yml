@@ -9,4 +9,9 @@ jobs:
 
     steps:
       - name: hello_world
-      - run: echo 'hello_world'
+        run: echo "hello_world"
+
+      - name: test
+        run : |
+          echo "Good"
+          echo "Morining"
