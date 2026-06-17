@@ -30,3 +30,8 @@ jobs:
         run : |
           echo ${{secrets.MY_SECRET}}
           echo ${{secrets.MY_PAY}}
+
+      - name: 낫 시크릿 변수 사용
+        run: |
+          echo ${{vars.MY_GRADE}}
+          echo ${{vars.MY_AGE}}
