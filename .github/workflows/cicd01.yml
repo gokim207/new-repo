@@ -15,3 +15,8 @@ jobs:
         run : |
           echo "Good"
           echo "Morining"
+
+      - name: 깃허브 내장 변수 사용
+        run : |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
