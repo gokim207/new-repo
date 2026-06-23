@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: cicid_springboot01
+server:
+  port: 8080
