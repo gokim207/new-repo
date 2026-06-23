@@ -10,6 +10,6 @@ public class AppController {
     public String hello() {
         int i = 0;
         int j = 0;
-        return "Hello World";
+        return "Hello World CICD01";
     }
 }

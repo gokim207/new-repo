@@ -1,37 +1,22 @@
-name: github_action_test
+name : deploy
 on:
   push:
-    branches:
-      - main
+    branches: main
+
 jobs:
-  deployjob:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: hello_world
-        run: echo "hello_world"
+      - name: SSH로 EC2에 접근
+      - uses: appleboy/ssh-action@v1
+      - with:
+          host : ${{secrets.EC2_HOST}}
+          username : ${{secrets.EC2_USERNSMR}}
+          key : ${{secrets.EC2_PRIVATE_KEY}}
 
-      - name: test
-        run : |
-          echo "Good"
-          echo "Morining"
-
-      - name: 깃허브 내장 변수 사용
-        run : |
-          echo "1,  $GITHUB_SHA"
-          echo "2,  $GITHUB_REPOSITORY"
-          echo "4, $GITHUB_REF_NAME"
-          echo "5, $GITHUB_RUN_NUMBER"
-          echo "6, $GITHUB_EVENT_NAME"
-          echo "7, $GITHUB_OS"
-          echo "8, $GITHUB_WORKSPACE"
-
-      - name: 시크릿 변수 사용
-        run : |
-          echo ${{secrets.MY_SECRET}}
-          echo ${{secrets.MY_PAY}}
-
-      - name: 낫 시크릿 변수 사용
-        run: |
-          echo ${{vars.MY_GRADE}}
-          echo ${{vars.MY_AGE}}
+          scripts_stop: |
+            cd /home/ubuntu/new-repo
+            git pull origin main
+            ./gradlwe clean build -x test
+            sudo fuser -k -n tcp 80 || true
+            sudo java -jar build/libs/*SNAPSHOT.jar > ./outout.log 2>&1 &
