@@ -22,6 +22,5 @@ jobs:
             rm -rf src/main/resources/application.yml
             echo $"APPLICATION_PROPERTIES" > src/main/resources/application.yml
             git pull origin main
-            ./gradlwe clean build -x test
             sudo fuser -k -n tcp 80 || true
             sudo java -jar build/libs/*SNAPSHOT.jar > ./outout.log 2>&1 &
